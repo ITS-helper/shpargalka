@@ -171,6 +171,20 @@
     @media (max-width: 500px) { .intro-banner { flex-direction: column; text-align: center; } }
 
     kbd { display: inline-block; padding: 2px 7px; border-radius: 5px; background: #E8EDF2; border: 1px solid #CBD5E1; font-family: 'Source Sans 3', sans-serif; font-size: 12.5px; color: #37474F; font-weight: 600; }
+
+    /* ===== ZONE TABLE ===== */
+    .zone-table-wrap { margin-top: 12px; overflow-x: auto; }
+    .zone-table { width: 100%; border-collapse: collapse; font-size: 13.5px; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .zone-table thead tr { background: var(--primary); color: #fff; }
+    .zone-table th { padding: 9px 12px; text-align: left; font-family: 'Oswald', sans-serif; font-size: 0.8em; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; }
+    .zone-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    .zone-table tbody tr:last-child { border-bottom: none; }
+    .zone-table tbody tr:hover { background: #EEF6FF; }
+    .zone-table td { padding: 9px 12px; color: #37474F; vertical-align: middle; }
+    .zone-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; font-family: 'Oswald', sans-serif; font-size: 0.82em; font-weight: 700; color: #fff; }
+    .z1 { background: #1565C0; } .z2 { background: #00897B; } .z3 { background: #E53935; } .z4 { background: #5E35B1; }
+    .zone-meta { font-size: 11.5px; color: var(--muted); margin-left: 4px; }
+    .zone-table-hint { font-size: 12px; color: var(--muted); margin: 8px 0 0 0; font-style: italic; }
   </style>
 </head>
 <body>
@@ -295,6 +309,125 @@
             </div>
           </div>
 
+          <!-- Раздел: Установка метки -->
+          <div class="guide-section">
+            <div class="section-title">
+              <span class="dot"></span>
+              Установка метки
+            </div>
+
+            <div class="steps">
+
+              <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    Перед выходом взять <strong>рюкзак со всем необходимым инструментом</strong> и <strong>специальные часы с режимом отладки</strong>.
+                  </div>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    Убедиться, что в зоне устанавливаемой метки часы с режимом отладки <strong>не ловят стабильный сигнал</strong> от других меток.
+                    <button class="screenshot-btn" onclick="openModal(4)">⌚ Скрин</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="note note-warn">
+                <span class="note-icon">⚠️</span>
+                <span>Если часы стабильно ловят другую метку — место для установки выбрано неверно. Нужно сменить позицию.</span>
+              </div>
+
+              <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    Включить заранее подготовленную метку и выставить параметры исходя из типа зоны на площадке:
+                  </div>
+                  <div class="zone-table-wrap">
+                    <table class="zone-table">
+                      <thead>
+                        <tr>
+                          <th>Тип зоны</th>
+                          <th>№</th>
+                          <th>Мощность</th>
+                          <th>Примечание</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Зоны проведения работ</td>
+                          <td><span class="zone-num z1">1</span></td>
+                          <td>9 <span class="zone-meta">~305 м</span></td>
+                          <td>Рабочие зоны</td>
+                        </tr>
+                        <tr>
+                          <td>Зона отдыха / обогрева</td>
+                          <td><span class="zone-num z2">2</span></td>
+                          <td>6 <span class="zone-meta">~30 м</span></td>
+                          <td>Бытовки, обогреватели</td>
+                        </tr>
+                        <tr>
+                          <td>Зона входа / пропускной пункт</td>
+                          <td><span class="zone-num z3">3</span></td>
+                          <td>4 <span class="zone-meta">~5 м</span></td>
+                          <td>КПП, турникеты</td>
+                        </tr>
+                        <tr>
+                          <td>Зона хранения / склад</td>
+                          <td><span class="zone-num z4">4</span></td>
+                          <td>7 <span class="zone-meta">~75 м</span></td>
+                          <td>Склады, стройматериалы</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p class="zone-table-hint">⚠️ Данные в таблице — пример-заглушка. Уточни актуальные значения и сообщи — обновим.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    При установке метки заполнить в приложении <strong>подробное описание местоположения</strong> и <strong>загрузить фотографии</strong>.
+                    <button class="screenshot-btn" onclick="openModal(5)">📱 Скрин</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-num">5</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    По возвращении в офис — разместить установленную метку на <strong>web-карте</strong>.
+                  </div>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-num">6</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    В BackEnd выставить <strong>маршрут метки</strong>.
+                    <button class="screenshot-btn" onclick="openModal(6)">🖥 Скрин</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="note note-success">
+                <span class="note-icon">✅</span>
+                <span>Только после выставления маршрута в BackEnd установка метки считается полностью завершённой.</span>
+              </div>
+
+            </div>
+          </div>
+          <!-- /Установка метки -->
+
         </div>
       </div>
     </div>
@@ -349,6 +482,9 @@
       ['./images/ble-screen-2.jpg', 'Скрин 2 — Настройки метки (тип, зона, период)'],
       ['./images/ble-screen-3.jpg', 'Скрин 3 — BackEnd: поставлена на учёт'],
       ['./images/ble-screen-4.jpg', 'Скрин 4 — BackEnd: установлена, работает'],
+      ['./images/install-screen-1.jpg', 'Установка — часы с режимом отладки (нестабильный сигнал)'],
+      ['./images/install-screen-2.jpg', 'Установка — описание местоположения и фото в приложении'],
+      ['./images/install-screen-3.jpg', 'Установка — маршрут метки в BackEnd'],
     ];
 
     let currentIdx = 0;
