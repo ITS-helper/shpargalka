@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шпаргалка инженера</title>
+  <meta name="theme-color" content="#2196F3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== AUTH OVERLAY ===== */
+    #authOverlay {
+      position: fixed; inset: 0; z-index: 99999;
+      background: linear-gradient(135deg, #1565C0 0%, #1976D2 50%, #2196F3 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      transition: opacity 0.3s ease;
+    }
+    #authOverlay.hidden { opacity: 0; pointer-events: none; }
+    .auth-box {
+      background: #fff; border-radius: 16px; padding: 36px 32px;
+      width: 100%; max-width: 360px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+      display: flex; flex-direction: column; gap: 20px; align-items: center;
+    }
+    .auth-logo {
+      font-family: 'Oswald', sans-serif; font-size: 1.1em; font-weight: 600;
+      color: #37474F; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .auth-title {
+      font-family: 'Oswald', sans-serif; font-size: 0.82em; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #78909C;
+      margin-top: -10px;
+    }
+    .auth-input {
+      width: 100%; padding: 11px 14px; border: 1.5px solid #E5E7EB;
+      border-radius: 9px; font-size: 15px; font-family: 'Source Sans 3', sans-serif;
+      color: #37474F; background: #F9FAFB; transition: border-color 0.2s;
+      text-align: center; letter-spacing: 0.08em;
+    }
+    .auth-input:focus { outline: none; border-color: #2196F3; background: #fff; }
+    .auth-btn {
+      width: 100%; font-family: 'Oswald', sans-serif; font-size: 0.95em;
+      letter-spacing: 0.07em; text-transform: uppercase; font-weight: 600;
+      padding: 12px; border-radius: 999px; border: none;
+      background: #2196F3; color: #fff; cursor: pointer;
+      transition: all 0.2s ease; box-shadow: 0 4px 14px rgba(33,150,243,0.3);
+    }
+    .auth-btn:hover { background: #1E88E5; transform: translateY(-1px); }
+    .auth-error {
+      font-size: 13px; color: #EF5350; text-align: center;
+      min-height: 18px; font-family: 'Source Sans 3', sans-serif;
+    }
+
+    :root {
+      --primary: #1565C0;
+      --secondary: #1976D2;
+      --accent: #2196F3;
+      --bg-main: #F5F7FA;
+      --card-bg: #ffffff;
+      --muted: #78909C;
+      --success: #43A047;
+      --warning: #FFA726;
+      --progress-bg: #E3F2FD;
+      --glass-bg: rgba(255,255,255,0.96);
+      --border: #E8EDF2;
+      --danger: #EF5350;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg-main);
+      margin: 0; padding: 0; min-height: 100vh;
+      overscroll-behavior: none;
+      color: #37474F;
+    }
+
+    header {
+      background: #fff;
+      padding: 0;
+      box-shadow: 0 1px 3px rgba(21,101,192,0.06);
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 2px solid #2196F3;
+    }
+    .header-inner {
+      max-width: 900px; margin: 0 auto;
+      padding: 12px 20px; display: flex; align-items: center; gap: 16px;
+    }
+    header img { height: 36px; width: auto; max-width: 160px; object-fit: contain; }
+    .header-title {
+      font-family: 'Oswald', sans-serif; font-size: 0.75em; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #78909C;
+      border-left: 1px solid #E8EDF2; padding-left: 16px;
+    }
+
+    .container { max-width: 900px; margin: 0 auto 40px auto; padding: 24px 20px; }
+
+    /* ===== GUIDE GROUPS ===== */
+    .guide-group {
+      margin-bottom: 16px; background: var(--card-bg); border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04); border: 1px solid var(--border);
+      overflow: hidden; transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .guide-group:hover { box-shadow: 0 4px 16px rgba(21,101,192,0.05); border-color: rgba(33,150,243,0.25); }
+
+    .group-header {
+      padding: 16px 20px 14px; cursor: pointer; user-select: none;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.2s;
+    }
+    .group-header:hover { background: #F9FAFB; }
+
+    .guide-group h2 {
+      font-family: 'Oswald', sans-serif; color: var(--primary); margin: 0;
+      font-size: 1.05em; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .guide-group h2 .icon { font-size: 1.1em; line-height: 1; display: flex; align-items: center; }
+    .group-chevron { color: var(--muted); font-size: 18px; transition: transform 0.3s ease; flex-shrink: 0; }
+    .guide-group.open .group-chevron { transform: rotate(180deg); }
+
+    .guide-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .guide-group.open .guide-body { max-height: 4000px; }
+    .guide-inner { padding: 6px 20px 20px; display: flex; flex-direction: column; gap: 0; }
+
+    /* ===== GUIDE SECTIONS ===== */
+    .guide-section {
+      margin-bottom: 20px;
+    }
+    .guide-section:last-child { margin-bottom: 0; }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif; font-size: 0.88em; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--secondary);
+      margin: 0 0 10px 0; padding: 10px 0 8px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-title .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
+    }
+
+    /* ===== STEPS ===== */
+    .steps { display: flex; flex-direction: column; gap: 8px; }
+
+    .step {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 12px 14px; background: #F9FAFB; border-radius: 10px;
+      border-left: 3px solid var(--border);
+      transition: border-left-color 0.2s, background 0.2s;
+    }
+    .step:hover { border-left-color: var(--accent); background: #EEF6FF; }
+
+    .step-num {
+      width: 26px; height: 26px; border-radius: 50%; background: var(--accent);
+      color: #fff; font-family: 'Oswald', sans-serif; font-size: 0.78em; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+
+    .step-content { flex: 1; }
+    .step-text {
+      font-size: 14px; color: #37474F; line-height: 1.55;
+    }
+
+    /* ===== WARNING / NOTE BADGES ===== */
+    .note {
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 11px 14px; border-radius: 9px; margin-top: 6px;
+      font-size: 13.5px; line-height: 1.45;
+    }
+    .note-warn {
+      background: #FFF8E1; border: 1px solid #FFE082; border-left: 4px solid #FFA726;
+      color: #6D4C00;
+    }
+    .note-info {
+      background: #E3F2FD; border: 1px solid #BFDBFE; border-left: 4px solid var(--accent);
+      color: #0D47A1;
+    }
+    .note-danger {
+      background: #FFEBEE; border: 1px solid #FFCDD2; border-left: 4px solid var(--danger);
+      color: #B71C1C;
+    }
+    .note-success {
+      background: #E8F5E9; border: 1px solid #C8E6C9; border-left: 4px solid var(--success);
+      color: #1B5E20;
+    }
+    .note-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ===== LINKS ===== */
+    .guide-link {
+      color: var(--accent); text-decoration: none; font-weight: 600;
+      border-bottom: 1px dashed rgba(33,150,243,0.4);
+      transition: border-bottom-color 0.15s, color 0.15s;
+      word-break: break-all;
+    }
+    .guide-link:hover { color: var(--primary); border-bottom-color: var(--primary); }
+
+    /* ===== SCREENSHOT LABEL ===== */
+    .screenshot-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(33,150,243,0.1); color: var(--accent);
+      border: 1px solid rgba(33,150,243,0.25); border-radius: 6px;
+      padding: 2px 8px; font-size: 12px; font-family: 'Oswald', sans-serif;
+      font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+      vertical-align: middle; margin-left: 4px;
+    }
+
+    /* ===== IMAGE GRID ===== */
+    .img-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px; margin-top: 10px;
+    }
+    .img-card {
+      border-radius: 10px; overflow: hidden; border: 1px solid var(--border);
+      background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .img-card img { width: 100%; display: block; }
+    .img-caption { padding: 6px 8px; font-size: 11.5px; color: var(--muted); text-align: center; font-family: 'Oswald', sans-serif; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* ===== INTRO ===== */
+    .intro-banner {
+      background: linear-gradient(135deg, #1565C0 0%, #1976D2 60%, #2196F3 100%);
+      border-radius: 12px; padding: 18px 22px; margin-bottom: 20px;
+      color: #fff; display: flex; align-items: center; gap: 16px;
+      box-shadow: 0 4px 16px rgba(21,101,192,0.2);
+    }
+    .intro-icon { font-size: 2.2em; flex-shrink: 0; }
+    .intro-text h1 {
+      font-family: 'Oswald', sans-serif; font-size: 1.3em; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 4px 0;
+    }
+    .intro-text p { font-size: 13.5px; opacity: 0.85; margin: 0; line-height: 1.4; }
+
+    @media (max-width: 500px) {
+      .intro-banner { flex-direction: column; text-align: center; }
+    }
+
+    kbd {
+      display: inline-block; padding: 2px 7px; border-radius: 5px;
+      background: #E8EDF2; border: 1px solid #CBD5E1;
+      font-family: 'Source Sans 3', sans-serif; font-size: 12.5px;
+      color: #37474F; font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AUTH -->
+  <div id="authOverlay">
+    <div class="auth-box">
+      <span class="auth-logo">ITSSupport</span>
+      <span class="auth-title">Шпаргалка инженера</span>
+      <input
+        class="auth-input"
+        type="password"
+        id="authInput"
+        placeholder="Введите пароль"
+        autocomplete="current-password"
+        onkeydown="if(event.key==='Enter') doAuth()"
+      >
+      <button class="auth-btn" onclick="doAuth()">Войти</button>
+      <span class="auth-error" id="authError"></span>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <img src="./images/ITS_logo_horizont.png" alt="ITSSupport" onerror="this.style.display='none'">
+      <span class="header-title">Шпаргалка инженера</span>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="intro-banner">
+      <div class="intro-icon">📋</div>
+      <div class="intro-text">
+        <h1>Шпаргалка</h1>
+        <p>Гайды и инструкции для дежурных инженеров. Нажмите на блок, чтобы раскрыть содержимое.</p>
+      </div>
+    </div>
+
+    <!-- BLE-МЕТКИ -->
+    <div class="guide-group" data-group="ble">
+      <div class="group-header" onclick="toggleGroup(this)">
+        <h2>
+          <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-top:-2px">
+              <polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"/>
+            </svg>
+          </span>
+          BLE-метки
+        </h2>
+        <span class="group-chevron">▼</span>
+      </div>
+      <div class="guide-body">
+        <div class="guide-inner">
+
+          <!-- Раздел: Регистрация новой метки -->
+          <div class="guide-section">
+            <div class="section-title">
+              <span class="dot"></span>
+              Регистрация новой метки (никогда не использовалась ранее)
+            </div>
+
+            <div class="steps">
+
+              <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    Включить метку. В мобильном приложении она будет отображаться как <kbd>ITS BLE Tag</kbd>.
+                  </div>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    Выставить в настройках метки: <strong>тип метки</strong> (bt1, bt2, bt3), <strong>тип зоны</strong>, <strong>период сканирования</strong>.
+                    <br>Важно: первым параметром выставить <strong>тип метки</strong>.
+                    <span class="screenshot-badge">📱 скрин 2</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    При настройке метки задать <strong>ID зоны</strong> (номер метки) — только свободным номером.<br>
+                    Сводная таблица свободных номеров находится в
+                    <a class="guide-link" href="https://docs.google.com/spreadsheets/d/1CU56AZdWC9dCvkf_z6CWMtrgfuWRCG3HYx7hp79vI_c/edit?gid=1105933443#gid=1105933443" target="_blank" rel="noopener">журнале BLE</a>.
+                  </div>
+                </div>
+              </div>
+
+              <div class="note note-danger">
+                <span class="note-icon">⛔</span>
+                <span>Не допускать повторения номеров меток — это приведёт к нарушению аналитики и логики установки.</span>
+              </div>
+
+              <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    После настройки метки в мобильном приложении нажать <strong>«Отправить данные на сервер»</strong>.
+                    <span class="screenshot-badge">📱 скрин 1</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-num">5</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    Проверить, что метка появилась в BackEnd:<br>
+                    <a class="guide-link" href="https://backend.vsm.workwatch.pro/admin/organization/ble/" target="_blank" rel="noopener">backend.vsm.workwatch.pro/admin/organization/ble/</a>
+                    <span class="screenshot-badge">🖥 скрин 3</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="note note-info">
+                <span class="note-icon">ℹ️</span>
+                <span>
+                  На скрине 3 видно пример метки со статусом «поставлена на учёт» — так выглядит успешно зарегистрированная новая метка. На скрине 4 — метка уже со статусом «установлена, работает» и заполненными GPS-координатами.
+                </span>
+              </div>
+
+            </div>
+          </div>
+          <!-- /раздел -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /BLE-метки -->
+
+  </div>
+
+  <script>
+    // ===== AUTH =====
+    const AUTH_SESSION_KEY = 'spravka_auth';
+    const AUTH_PASSWORDS = ['VELES_2024', 'impl_dept'];
+
+    function doAuth() {
+      const val = document.getElementById('authInput').value;
+      const err = document.getElementById('authError');
+      if (AUTH_PASSWORDS.includes(val)) {
+        sessionStorage.setItem(AUTH_SESSION_KEY, '1');
+        const overlay = document.getElementById('authOverlay');
+        overlay.classList.add('hidden');
+        setTimeout(() => overlay.remove(), 350);
+      } else {
+        err.textContent = 'Неверный пароль';
+        document.getElementById('authInput').value = '';
+        document.getElementById('authInput').focus();
+        setTimeout(() => { err.textContent = ''; }, 2500);
+      }
+    }
+
+    (function checkAuth() {
+      if (sessionStorage.getItem(AUTH_SESSION_KEY) === '1') {
+        document.getElementById('authOverlay').remove();
+      } else {
+        window.addEventListener('load', () => {
+          document.getElementById('authInput')?.focus();
+        });
+      }
+    })();
+
+    // ===== GROUPS =====
+    const STORAGE_KEY = 'itssupport_spravka_v1';
+
+    function toggleGroup(header) {
+      const group = header.parentElement;
+      group.classList.toggle('open');
+      saveState();
+    }
+
+    function saveState() {
+      const state = {
+        groups: Array.from(document.querySelectorAll('.guide-group')).map(g => ({
+          id: g.dataset.group, open: g.classList.contains('open')
+        }))
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function loadState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (saved?.groups) {
+          saved.groups.forEach(({ id, open }) => {
+            const group = document.querySelector(`[data-group="${id}"]`);
+            if (group && open) group.classList.add('open');
+          });
+        }
+      } catch (e) {}
+    }
+
+    document.addEventListener('DOMContentLoaded', loadState);
+    window.addEventListener('beforeunload', saveState);
+  </script>
+</body>
+</html>
