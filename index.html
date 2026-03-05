@@ -183,8 +183,32 @@
     .zone-table td { padding: 9px 12px; color: #37474F; vertical-align: middle; }
     .zone-num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; font-family: 'Oswald', sans-serif; font-size: 0.82em; font-weight: 700; color: #fff; }
     .z1 { background: #1565C0; } .z2 { background: #00897B; } .z3 { background: #E53935; } .z4 { background: #5E35B1; }
+    .z5 { background: #00ACC1; } .z6 { background: #F4511E; } .z7 { background: #6D4C41; } .z8 { background: #8E24AA; }
+    .z9 { background: #3949AB; } .z10 { background: #43A047; } .z11 { background: #FFB300; } .z12 { background: #546E7A; }
+    .z13 { background: #D81B60; }
     .zone-meta { font-size: 11.5px; color: var(--muted); margin-left: 4px; }
     .zone-table-hint { font-size: 12px; color: var(--muted); margin: 8px 0 0 0; font-style: italic; }
+
+    /* ===== COLLAPSIBLE SUBSECTION ===== */
+    .subsection-toggle {
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; user-select: none;
+      padding: 10px 14px; margin-top: 8px; margin-bottom: 4px;
+      background: #EEF6FF; border: 1px solid rgba(33,150,243,0.2);
+      border-radius: 9px; transition: background 0.2s, border-color 0.2s;
+    }
+    .subsection-toggle:hover { background: #E3F2FD; border-color: rgba(33,150,243,0.35); }
+    .subsection-toggle-title {
+      font-family: 'Oswald', sans-serif; font-size: 0.82em; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase; color: var(--secondary);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .subsection-toggle-title .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .subsection-chevron { color: var(--muted); font-size: 14px; transition: transform 0.3s ease; flex-shrink: 0; }
+    .subsection-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .subsection-wrap.open .subsection-chevron { transform: rotate(180deg); }
+    .subsection-wrap.open .subsection-body { max-height: 3000px; }
+    .subsection-wrap.open .subsection-toggle { background: #E3F2FD; border-color: rgba(33,150,243,0.35); }
   </style>
 </head>
 <body>
@@ -309,6 +333,53 @@
             </div>
           </div>
 
+          <!-- Подраздел: Регистрация метки, которая уже использовалась -->
+          <div class="guide-section">
+            <div class="subsection-wrap" onclick="this.classList.toggle('open')">
+              <div class="subsection-toggle">
+                <span class="subsection-toggle-title">
+                  <span class="dot"></span>
+                  Регистрация метки, которая уже использовалась
+                </span>
+                <span class="subsection-chevron">▼</span>
+              </div>
+              <div class="subsection-body">
+                <div class="steps" style="padding-top: 10px;">
+
+                  <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                      <div class="step-text">
+                        Подключиться к метке в мобильном приложении и к существующему <strong>ID зоны</strong> (номер метки) добавить в начале <kbd>33</kbd>.<br>
+                        Пример: была <kbd>947</kbd> → стала <kbd>33947</kbd>.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                      <div class="step-text">
+                        Отправить обход с этой меткой на сервер.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                      <div class="step-text">
+                        Подключиться к метке и задать ей <strong>свободный номер</strong> из
+                        <a class="guide-link" href="https://docs.google.com/spreadsheets/d/1CU56AZdWC9dCvkf_z6CWMtrgfuWRCG3HYx7hp79vI_c/edit?gid=1105933443#gid=1105933443" target="_blank" rel="noopener">журнала BLE</a>, затем отправить обход на сервер.
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Раздел: Установка метки -->
           <div class="guide-section">
             <div class="section-title">
@@ -348,44 +419,95 @@
                   <div class="step-text">
                     Включить заранее подготовленную метку и выставить параметры исходя из типа зоны на площадке:
                   </div>
-                  <div class="zone-table-wrap">
+                  <div class="subsection-wrap" onclick="event.stopPropagation(); this.classList.toggle('open')" style="margin-top: 8px;">
+                    <div class="subsection-toggle">
+                      <span class="subsection-toggle-title">
+                        <span class="dot"></span>
+                        Классификация (тип) рабочих зон
+                      </span>
+                      <span class="subsection-chevron">▼</span>
+                    </div>
+                    <div class="subsection-body">
+                      <div class="zone-table-wrap">
                     <table class="zone-table">
                       <thead>
                         <tr>
                           <th>Тип зоны</th>
-                          <th>№</th>
-                          <th>Мощность</th>
-                          <th>Примечание</th>
+                          <th>Наименование зоны</th>
+                          <th>Ограничения по мощности</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Зоны проведения работ</td>
                           <td><span class="zone-num z1">1</span></td>
-                          <td>9 <span class="zone-meta">~305 м</span></td>
-                          <td>Рабочие зоны</td>
+                          <td>Зоны проведения работ</td>
+                          <td>не более 65м<br><span class="zone-meta">BT1: мощн. 9 (4 дБ, ~40м) · BT2/BT3: мощн. 3 (-20 дБ)</span></td>
                         </tr>
                         <tr>
-                          <td>Зона отдыха / обогрева</td>
                           <td><span class="zone-num z2">2</span></td>
-                          <td>6 <span class="zone-meta">~30 м</span></td>
-                          <td>Бытовки, обогреватели</td>
+                          <td>Столовые</td>
+                          <td></td>
                         </tr>
                         <tr>
-                          <td>Зона входа / пропускной пункт</td>
                           <td><span class="zone-num z3">3</span></td>
-                          <td>4 <span class="zone-meta">~5 м</span></td>
-                          <td>КПП, турникеты</td>
+                          <td>Опасные зоны</td>
+                          <td></td>
                         </tr>
                         <tr>
-                          <td>Зона хранения / склад</td>
                           <td><span class="zone-num z4">4</span></td>
-                          <td>7 <span class="zone-meta">~75 м</span></td>
-                          <td>Склады, стройматериалы</td>
+                          <td>Курилки</td>
+                          <td>не более 8 м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 1 (-40 дБ, ~5м)</span></td>
+                        </tr>
+                        <tr>
+                          <td><span class="zone-num z5">5</span></td>
+                          <td>Зоны отдыха внутри</td>
+                          <td>не более 15м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 2 (-30 дБ)</span></td>
+                        </tr>
+                        <tr>
+                          <td><span class="zone-num z6">6</span></td>
+                          <td>ВЖГ</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><span class="zone-num z7">7</span></td>
+                          <td>Туалеты</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><span class="zone-num z8">8</span></td>
+                          <td>Остановки автобусов</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><span class="zone-num z9">9</span></td>
+                          <td>Административные помещения</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><span class="zone-num z10">10</span></td>
+                          <td>Зона выдачи СИЗ (WW)</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><span class="zone-num z11">11</span></td>
+                          <td>Склад</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><span class="zone-num z12">12</span></td>
+                          <td>Мастерские</td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td><span class="zone-num z13">13</span></td>
+                          <td>Выходы с объекта (КПП)</td>
+                          <td></td>
                         </tr>
                       </tbody>
                     </table>
-                    <p class="zone-table-hint">⚠️ Данные в таблице — пример-заглушка. Уточни актуальные значения — обновлю позже.</p>
+                  </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -404,13 +526,22 @@
                 <div class="step-num">5</div>
                 <div class="step-content">
                   <div class="step-text">
-                    По возвращении в офис — разместить установленную метку на <strong>web-карте</strong>.
+                    Разместить фото/видео и описание расположения метки в <strong>рабочий чат</strong>.
                   </div>
                 </div>
               </div>
 
               <div class="step">
                 <div class="step-num">6</div>
+                <div class="step-content">
+                  <div class="step-text">
+                    По возвращении в офис — разместить установленную метку на <strong>web-карте</strong>.
+                  </div>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-num">7</div>
                 <div class="step-content">
                   <div class="step-text">
                     В BackEnd выставить <strong>маршрут метки</strong>.
@@ -432,6 +563,87 @@
       </div>
     </div>
     <!-- /BLE-метки -->
+
+    <!-- РЕГИСТРАЦИЯ НОВЫХ ПОЛЬЗОВАТЕЛЕЙ -->
+    <div class="guide-group" data-group="users">
+      <div class="group-header" onclick="toggleGroup(this)">
+        <h2>
+          <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-top:-2px">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <line x1="19" y1="8" x2="19" y2="14"/>
+              <line x1="22" y1="11" x2="16" y2="11"/>
+            </svg>
+          </span>
+          Регистрация новых пользователей
+        </h2>
+        <span class="group-chevron">▼</span>
+      </div>
+      <div class="guide-body">
+        <div class="guide-inner">
+          <div class="note note-info">
+            <span class="note-icon">ℹ️</span>
+            <span>Раздел в разработке — содержание будет добавлено позже.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Регистрация новых пользователей -->
+
+    <!-- ОФОРМЛЕНИЕ ЗАЯВКИ OZON/CDEK -->
+    <div class="guide-group" data-group="ozon-cdek">
+      <div class="group-header" onclick="toggleGroup(this)">
+        <h2>
+          <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-top:-2px">
+              <rect x="1" y="3" width="15" height="13"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </span>
+          Оформление заявки OZON / CDEK
+        </h2>
+        <span class="group-chevron">▼</span>
+      </div>
+      <div class="guide-body">
+        <div class="guide-inner">
+          <div class="note note-info">
+            <span class="note-icon">ℹ️</span>
+            <span>Раздел в разработке — содержание будет добавлено позже.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Оформление заявки OZON/CDEK -->
+
+    <!-- ЗАЯВЛЕНИЯ НА ОТПУСК / ЗАКАЗ БИЛЕТОВ -->
+    <div class="guide-group" data-group="vacation">
+      <div class="group-header" onclick="toggleGroup(this)">
+        <h2>
+          <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-top:-2px">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </span>
+          Заявления на отпуск / заказ билетов
+        </h2>
+        <span class="group-chevron">▼</span>
+      </div>
+      <div class="guide-body">
+        <div class="guide-inner">
+          <div class="note note-info">
+            <span class="note-icon">ℹ️</span>
+            <span>Раздел в разработке — содержание будет добавлено позже.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Заявления на отпуск / заказ билетов -->
 
   </div>
 
@@ -476,7 +688,6 @@
     })();
 
     // ===== IMAGE MODAL =====
-    // Список скринов: [путь к файлу, подпись]
     const SCREENSHOTS = [
       ['./images/ble-screen-1.jpg', 'Скрин 1 — Отправка данных на сервер'],
       ['./images/ble-screen-2.jpg', 'Скрин 2 — Настройки метки (тип, зона, период)'],
