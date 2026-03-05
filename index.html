@@ -240,18 +240,19 @@
             </div>
           </div>
 
-          <!-- Регистрация метки, которая уже использовалась -->
+          <!-- Замена действующей метки -->
           <div class="guide-section">
             <div class="subsection-wrap" onclick="this.classList.toggle('open')">
               <div class="subsection-toggle">
-                <span class="subsection-toggle-title"><span class="dot"></span>Регистрация метки, которая уже использовалась</span>
+                <span class="subsection-toggle-title"><span class="dot"></span>Замена действующей метки</span>
                 <span class="subsection-chevron">▼</span>
               </div>
               <div class="subsection-body">
-                <div class="steps" style="padding-top: 10px;">
+                <div class="note note-info" style="margin: 10px 0 8px 0;"><span class="note-icon">ℹ️</span><span>Если необходимо заменить действующую метку на новую — следуем инструкции:</span></div>
+                <div class="steps">
                   <div class="step">
                     <div class="step-num">1</div>
-                    <div class="step-content"><div class="step-text">Подключиться к метке в мобильном приложении и к существующему <strong>ID зоны</strong> (номер метки) добавить в начале <kbd>33</kbd>.<br>Пример: была <kbd>947</kbd> → стала <kbd>33947</kbd>.</div></div>
+                    <div class="step-content"><div class="step-text">Подключиться к <strong>действующей метке</strong> в мобильном приложении и к существующему <strong>ID зоны</strong> добавить в начале <kbd>33</kbd>.<br>Пример: была <kbd>947</kbd> → стала <kbd>33947</kbd>.</div></div>
                   </div>
                   <div class="step">
                     <div class="step-num">2</div>
@@ -259,9 +260,10 @@
                   </div>
                   <div class="step">
                     <div class="step-num">3</div>
-                    <div class="step-content"><div class="step-text">Подключиться к метке и задать ей <strong>свободный номер</strong> из <a class="guide-link" href="https://docs.google.com/spreadsheets/d/1CU56AZdWC9dCvkf_z6CWMtrgfuWRCG3HYx7hp79vI_c/edit?gid=1105933443#gid=1105933443" target="_blank" rel="noopener">журнала BLE</a>, затем отправить обход на сервер.</div></div>
+                    <div class="step-content"><div class="step-text">Подключиться к <strong>новой метке</strong> и задать ей <strong>изначальный номер</strong> старой метки (например <kbd>947</kbd>), затем отправить обход на сервер.</div></div>
                   </div>
                 </div>
+                <div class="note note-warn" style="margin-top: 8px;"><span class="note-icon">⚠️</span><span>Если метка <strong>утеряна</strong> — устанавливаем новую со свободным номером из журнала BLE.</span></div>
               </div>
             </div>
           </div>
@@ -295,19 +297,19 @@
                             <tr><th>Тип зоны</th><th>Наименование зоны</th><th>Ограничения по мощности</th></tr>
                           </thead>
                           <tbody>
-                            <tr><td><span class="zone-num z1">1</span></td><td>Зоны проведения работ</td><td>не более 65м<br><span class="zone-meta">BT1: мощн. 9 (4 дБ, ~40м) · BT2/BT3: мощн. 3 (-20 дБ)</span></td></tr>
-                            <tr><td><span class="zone-num z2">2</span></td><td>Столовые</td><td></td></tr>
-                            <tr><td><span class="zone-num z3">3</span></td><td>Опасные зоны</td><td></td></tr>
-                            <tr><td><span class="zone-num z4">4</span></td><td>Курилки</td><td>не более 8 м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 1 (-40 дБ, ~5м)</span></td></tr>
-                            <tr><td><span class="zone-num z5">5</span></td><td>Зоны отдыха внутри</td><td>не более 15м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 2 (-30 дБ)</span></td></tr>
-                            <tr><td><span class="zone-num z6">6</span></td><td>ВЖГ</td><td></td></tr>
-                            <tr><td><span class="zone-num z7">7</span></td><td>Туалеты</td><td></td></tr>
-                            <tr><td><span class="zone-num z8">8</span></td><td>Остановки автобусов</td><td></td></tr>
-                            <tr><td><span class="zone-num z9">9</span></td><td>Административные помещения</td><td></td></tr>
-                            <tr><td><span class="zone-num z10">10</span></td><td>Зона выдачи СИЗ (WW)</td><td></td></tr>
-                            <tr><td><span class="zone-num z11">11</span></td><td>Склад</td><td></td></tr>
-                            <tr><td><span class="zone-num z12">12</span></td><td>Мастерские</td><td></td></tr>
-                            <tr><td><span class="zone-num z13">13</span></td><td>Выходы с объекта (КПП)</td><td></td></tr>
+                            <tr><td><strong>1</strong></td><td>Зоны проведения работ</td><td>не более 65м<br><span class="zone-meta">BT1: мощн. 9 (4 дБ, ~40м) · BT2/BT3: мощн. 3 (-20 дБ)</span></td></tr>
+                            <tr><td><strong>2</strong></td><td>Столовые</td><td></td></tr>
+                            <tr><td><strong>3</strong></td><td>Опасные зоны</td><td></td></tr>
+                            <tr><td><strong>4</strong></td><td>Курилки</td><td>не более 8 м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 1 (-40 дБ, ~5м)</span></td></tr>
+                            <tr><td><strong>5</strong></td><td>Зоны отдыха внутри</td><td>не более 15м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 2 (-30 дБ)</span></td></tr>
+                            <tr><td><strong>6</strong></td><td>ВЖГ</td><td></td></tr>
+                            <tr><td><strong>7</strong></td><td>Туалеты</td><td></td></tr>
+                            <tr><td><strong>8</strong></td><td>Остановки автобусов</td><td></td></tr>
+                            <tr><td><strong>9</strong></td><td>Административные помещения</td><td></td></tr>
+                            <tr><td><strong>10</strong></td><td>Зона выдачи СИЗ (WW)</td><td></td></tr>
+                            <tr><td><strong>11</strong></td><td>Склад</td><td></td></tr>
+                            <tr><td><strong>12</strong></td><td>Мастерские</td><td></td></tr>
+                            <tr><td><strong>13</strong></td><td>Выходы с объекта (КПП)</td><td></td></tr>
                           </tbody>
                         </table>
                       </div>
