@@ -87,7 +87,7 @@
     .guide-link { color: var(--accent); text-decoration: none; font-weight: 600; border-bottom: 1px dashed rgba(33,150,243,0.4); transition: border-bottom-color 0.15s, color 0.15s; word-break: break-all; }
     .guide-link:hover { color: var(--primary); border-bottom-color: var(--primary); }
 
-    /* ===== SCREENSHOT BUTTON ===== */
+    /* SCREENSHOT BUTTON */
     .screenshot-btn {
       display: inline-flex; align-items: center; gap: 5px;
       background: rgba(33,150,243,0.1); color: var(--accent);
@@ -101,67 +101,25 @@
     .screenshot-btn:hover { background: rgba(33,150,243,0.2); border-color: var(--accent); transform: translateY(-1px); }
     .screenshot-btn:active { transform: scale(0.97); }
 
-    /* ===== IMAGE MODAL ===== */
+    /* IMAGE MODAL */
     #imgModal {
       position: fixed; inset: 0; z-index: 9000;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(6px);
+      background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(6px);
       display: flex; align-items: center; justify-content: center;
-      padding: 16px;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.25s ease;
+      padding: 16px; opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
     }
     #imgModal.open { opacity: 1; pointer-events: all; }
-
-    .img-modal-inner {
-      position: relative; max-width: 480px; width: 100%;
-      transform: scale(0.92) translateY(16px);
-      transition: transform 0.25s ease;
-    }
+    .img-modal-inner { position: relative; max-width: 480px; width: 100%; transform: scale(0.92) translateY(16px); transition: transform 0.25s ease; }
     #imgModal.open .img-modal-inner { transform: scale(1) translateY(0); }
-
-    #imgModal img {
-      width: 100%; border-radius: 14px;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
-      display: block;
-    }
-
-    .img-modal-caption {
-      margin-top: 12px; text-align: center;
-      font-family: 'Oswald', sans-serif; font-size: 0.82em;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .img-modal-close {
-      position: absolute; top: -14px; right: -14px;
-      width: 36px; height: 36px; border-radius: 50%;
-      background: #fff; border: none; cursor: pointer;
-      font-size: 18px; color: #37474F;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      transition: background 0.15s, transform 0.15s;
-      line-height: 1;
-    }
+    #imgModal img { width: 100%; border-radius: 14px; box-shadow: 0 32px 80px rgba(0,0,0,0.5); display: block; }
+    .img-modal-caption { margin-top: 12px; text-align: center; font-family: 'Oswald', sans-serif; font-size: 0.82em; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+    .img-modal-close { position: absolute; top: -14px; right: -14px; width: 36px; height: 36px; border-radius: 50%; background: #fff; border: none; cursor: pointer; font-size: 18px; color: #37474F; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.25); transition: background 0.15s, transform 0.15s; line-height: 1; }
     .img-modal-close:hover { background: #FFEBEE; color: var(--danger); transform: scale(1.1); }
-
-    /* Nav arrows */
-    .img-modal-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      width: 38px; height: 38px; border-radius: 50%;
-      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
-      color: #fff; font-size: 18px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.15s;
-      backdrop-filter: blur(4px);
-    }
+    .img-modal-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; backdrop-filter: blur(4px); }
     .img-modal-nav:hover { background: rgba(255,255,255,0.3); }
     .img-modal-prev { left: -52px; }
     .img-modal-next { right: -52px; }
-    @media (max-width: 600px) {
-      .img-modal-prev { left: 6px; }
-      .img-modal-next { right: 6px; }
-    }
+    @media (max-width: 600px) { .img-modal-prev { left: 6px; } .img-modal-next { right: 6px; } }
 
     /* INTRO */
     .intro-banner { background: linear-gradient(135deg, #1565C0 0%, #1976D2 60%, #2196F3 100%); border-radius: 12px; padding: 18px 22px; margin-bottom: 20px; color: #fff; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 16px rgba(21,101,192,0.2); }
@@ -172,7 +130,7 @@
 
     kbd { display: inline-block; padding: 2px 7px; border-radius: 5px; background: #E8EDF2; border: 1px solid #CBD5E1; font-family: 'Source Sans 3', sans-serif; font-size: 12.5px; color: #37474F; font-weight: 600; }
 
-    /* ===== ZONE TABLE ===== */
+    /* ZONE TABLE */
     .zone-table-wrap { margin-top: 12px; overflow-x: auto; }
     .zone-table { width: 100%; border-collapse: collapse; font-size: 13.5px; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
     .zone-table thead tr { background: var(--primary); color: #fff; }
@@ -189,7 +147,7 @@
     .zone-meta { font-size: 11.5px; color: var(--muted); margin-left: 4px; }
     .zone-table-hint { font-size: 12px; color: var(--muted); margin: 8px 0 0 0; font-style: italic; }
 
-    /* ===== COLLAPSIBLE SUBSECTION ===== */
+    /* COLLAPSIBLE SUBSECTION */
     .subsection-toggle {
       display: flex; align-items: center; justify-content: space-between;
       cursor: pointer; user-select: none;
@@ -198,11 +156,7 @@
       border-radius: 9px; transition: background 0.2s, border-color 0.2s;
     }
     .subsection-toggle:hover { background: #E3F2FD; border-color: rgba(33,150,243,0.35); }
-    .subsection-toggle-title {
-      font-family: 'Oswald', sans-serif; font-size: 0.82em; font-weight: 600;
-      letter-spacing: 0.07em; text-transform: uppercase; color: var(--secondary);
-      display: flex; align-items: center; gap: 8px;
-    }
+    .subsection-toggle-title { font-family: 'Oswald', sans-serif; font-size: 0.82em; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--secondary); display: flex; align-items: center; gap: 8px; }
     .subsection-toggle-title .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
     .subsection-chevron { color: var(--muted); font-size: 14px; transition: transform 0.3s ease; flex-shrink: 0; }
     .subsection-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -257,307 +211,129 @@
       <div class="guide-body">
         <div class="guide-inner">
 
+          <!-- Регистрация новой метки -->
           <div class="guide-section">
-            <div class="section-title">
-              <span class="dot"></span>
-              Регистрация новой метки (никогда не использовалась ранее)
-            </div>
-
+            <div class="section-title"><span class="dot"></span>Регистрация новой метки (никогда не использовалась ранее)</div>
             <div class="steps">
-
               <div class="step">
                 <div class="step-num">1</div>
-                <div class="step-content">
-                  <div class="step-text">
-                    Включить метку. В мобильном приложении она будет отображаться как <kbd>ITS BLE Tag</kbd>.
-                  </div>
-                </div>
+                <div class="step-content"><div class="step-text">Включить метку. В мобильном приложении она будет отображаться как <kbd>ITS BLE Tag</kbd>.</div></div>
               </div>
-
               <div class="step">
                 <div class="step-num">2</div>
-                <div class="step-content">
-                  <div class="step-text">
-                    Выставить в настройках метки: <strong>тип метки</strong> (bt1, bt2, bt3), <strong>тип зоны</strong>, <strong>период сканирования</strong>.
-                    <br>Важно: первым параметром выставить <strong>тип метки</strong>.
-                    <button class="screenshot-btn" onclick="openModal(1)">📱 Скрин 2</button>
-                  </div>
-                </div>
+                <div class="step-content"><div class="step-text">Выставить в настройках метки: <strong>тип метки</strong> (bt1, bt2, bt3), <strong>тип зоны</strong>, <strong>период сканирования</strong>.<br>Важно: первым параметром выставить <strong>тип метки</strong>.<button class="screenshot-btn" onclick="openModal(1)">📱 Скрин 2</button></div></div>
               </div>
-
               <div class="step">
                 <div class="step-num">3</div>
-                <div class="step-content">
-                  <div class="step-text">
-                    При настройке метки задать <strong>ID зоны</strong> (номер метки) — только свободным номером.<br>
-                    Сводная таблица свободных номеров находится в
-                    <a class="guide-link" href="https://docs.google.com/spreadsheets/d/1CU56AZdWC9dCvkf_z6CWMtrgfuWRCG3HYx7hp79vI_c/edit?gid=1105933443#gid=1105933443" target="_blank" rel="noopener">журнале BLE</a>.
-                  </div>
-                </div>
+                <div class="step-content"><div class="step-text">При настройке метки задать <strong>ID зоны</strong> (номер метки) — только свободным номером.<br>Сводная таблица свободных номеров находится в <a class="guide-link" href="https://docs.google.com/spreadsheets/d/1CU56AZdWC9dCvkf_z6CWMtrgfuWRCG3HYx7hp79vI_c/edit?gid=1105933443#gid=1105933443" target="_blank" rel="noopener">журнале BLE</a>.</div></div>
               </div>
-
-              <div class="note note-danger">
-                <span class="note-icon">⛔</span>
-                <span>Не допускать повторения номеров меток — это приведёт к нарушению аналитики и логики установки.</span>
-              </div>
-
+              <div class="note note-danger"><span class="note-icon">⛔</span><span>Не допускать повторения номеров меток — это приведёт к нарушению аналитики и логики установки.</span></div>
               <div class="step">
                 <div class="step-num">4</div>
-                <div class="step-content">
-                  <div class="step-text">
-                    После настройки метки в мобильном приложении нажать <strong>«Отправить данные на сервер»</strong>.
-                    <button class="screenshot-btn" onclick="openModal(0)">📱 Скрин 1</button>
-                  </div>
-                </div>
+                <div class="step-content"><div class="step-text">После настройки метки в мобильном приложении нажать <strong>«Отправить данные на сервер»</strong>.<button class="screenshot-btn" onclick="openModal(0)">📱 Скрин 1</button></div></div>
               </div>
-
               <div class="step">
                 <div class="step-num">5</div>
-                <div class="step-content">
-                  <div class="step-text">
-                    Проверить, что метка появилась в BackEnd:<br>
-                    <a class="guide-link" href="https://backend.vsm.workwatch.pro/admin/organization/ble/" target="_blank" rel="noopener">backend.vsm.workwatch.pro/admin/organization/ble/</a>
-                    <button class="screenshot-btn" onclick="openModal(2)">🖥 Скрин 3</button>
-                    <button class="screenshot-btn" onclick="openModal(3)">🖥 Скрин 4</button>
-                  </div>
-                </div>
+                <div class="step-content"><div class="step-text">Проверить, что метка появилась в BackEnd:<br><a class="guide-link" href="https://backend.vsm.workwatch.pro/admin/organization/ble/" target="_blank" rel="noopener">backend.vsm.workwatch.pro/admin/organization/ble/</a><button class="screenshot-btn" onclick="openModal(2)">🖥 Скрин 3</button><button class="screenshot-btn" onclick="openModal(3)">🖥 Скрин 4</button></div></div>
               </div>
-
-              <div class="note note-info">
-                <span class="note-icon">ℹ️</span>
-                <span>
-                  Скрин 3 — метка со статусом «поставлена на учёт» (новая). Скрин 4 — метка со статусом «установлена, работает» с GPS-координатами.
-                </span>
-              </div>
-
+              <div class="note note-info"><span class="note-icon">ℹ️</span><span>Скрин 3 — метка со статусом «поставлена на учёт» (новая). Скрин 4 — метка со статусом «установлена, работает» с GPS-координатами.</span></div>
             </div>
           </div>
 
-          <!-- Подраздел: Регистрация метки, которая уже использовалась -->
+          <!-- Регистрация метки, которая уже использовалась -->
           <div class="guide-section">
             <div class="subsection-wrap" onclick="this.classList.toggle('open')">
               <div class="subsection-toggle">
-                <span class="subsection-toggle-title">
-                  <span class="dot"></span>
-                  Регистрация метки, которая уже использовалась
-                </span>
+                <span class="subsection-toggle-title"><span class="dot"></span>Регистрация метки, которая уже использовалась</span>
                 <span class="subsection-chevron">▼</span>
               </div>
               <div class="subsection-body">
                 <div class="steps" style="padding-top: 10px;">
-
                   <div class="step">
                     <div class="step-num">1</div>
-                    <div class="step-content">
-                      <div class="step-text">
-                        Подключиться к метке в мобильном приложении и к существующему <strong>ID зоны</strong> (номер метки) добавить в начале <kbd>33</kbd>.<br>
-                        Пример: была <kbd>947</kbd> → стала <kbd>33947</kbd>.
-                      </div>
-                    </div>
+                    <div class="step-content"><div class="step-text">Подключиться к метке в мобильном приложении и к существующему <strong>ID зоны</strong> (номер метки) добавить в начале <kbd>33</kbd>.<br>Пример: была <kbd>947</kbd> → стала <kbd>33947</kbd>.</div></div>
                   </div>
-
                   <div class="step">
                     <div class="step-num">2</div>
-                    <div class="step-content">
-                      <div class="step-text">
-                        Отправить обход с этой меткой на сервер.
-                      </div>
-                    </div>
+                    <div class="step-content"><div class="step-text">Отправить обход с этой меткой на сервер.</div></div>
                   </div>
-
                   <div class="step">
                     <div class="step-num">3</div>
-                    <div class="step-content">
-                      <div class="step-text">
-                        Подключиться к метке и задать ей <strong>свободный номер</strong> из
-                        <a class="guide-link" href="https://docs.google.com/spreadsheets/d/1CU56AZdWC9dCvkf_z6CWMtrgfuWRCG3HYx7hp79vI_c/edit?gid=1105933443#gid=1105933443" target="_blank" rel="noopener">журнала BLE</a>, затем отправить обход на сервер.
-                      </div>
-                    </div>
+                    <div class="step-content"><div class="step-text">Подключиться к метке и задать ей <strong>свободный номер</strong> из <a class="guide-link" href="https://docs.google.com/spreadsheets/d/1CU56AZdWC9dCvkf_z6CWMtrgfuWRCG3HYx7hp79vI_c/edit?gid=1105933443#gid=1105933443" target="_blank" rel="noopener">журнала BLE</a>, затем отправить обход на сервер.</div></div>
                   </div>
-
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Раздел: Установка метки -->
+          <!-- Установка метки -->
           <div class="guide-section">
-            <div class="section-title">
-              <span class="dot"></span>
-              Установка метки
-            </div>
-
+            <div class="section-title"><span class="dot"></span>Установка метки</div>
             <div class="steps">
-
               <div class="step">
                 <div class="step-num">1</div>
-                <div class="step-content">
-                  <div class="step-text">
-                    Перед выходом взять <strong>рюкзак со всем необходимым инструментом</strong> и <strong>специальные часы с режимом отладки</strong>.
-                  </div>
-                </div>
+                <div class="step-content"><div class="step-text">Перед выходом взять <strong>рюкзак со всем необходимым инструментом</strong> и <strong>специальные часы с режимом отладки</strong>.</div></div>
               </div>
-
               <div class="step">
                 <div class="step-num">2</div>
-                <div class="step-content">
-                  <div class="step-text">
-                    Убедиться, что в зоне устанавливаемой метки часы с режимом отладки <strong>не ловят стабильный сигнал</strong> от других меток.
-                    <button class="screenshot-btn" onclick="openModal(4)">⌚ Скрин</button>
-                  </div>
-                </div>
+                <div class="step-content"><div class="step-text">Убедиться, что в зоне устанавливаемой метки часы с режимом отладки <strong>не ловят стабильный сигнал</strong> от других меток.<button class="screenshot-btn" onclick="openModal(4)">⌚ Скрин</button></div></div>
               </div>
-
-              <div class="note note-warn">
-                <span class="note-icon">⚠️</span>
-                <span>Если часы стабильно ловят другую метку — место для установки выбрано неверно. Нужно сменить позицию.</span>
-              </div>
-
+              <div class="note note-warn"><span class="note-icon">⚠️</span><span>Если часы стабильно ловят другую метку — место для установки выбрано неверно. Нужно сменить позицию.</span></div>
               <div class="step">
                 <div class="step-num">3</div>
                 <div class="step-content">
-                  <div class="step-text">
-                    Включить заранее подготовленную метку и выставить параметры исходя из типа зоны на площадке:
-                  </div>
+                  <div class="step-text">Включить заранее подготовленную метку и выставить параметры исходя из типа зоны на площадке:</div>
                   <div class="subsection-wrap" onclick="event.stopPropagation(); this.classList.toggle('open')" style="margin-top: 8px;">
                     <div class="subsection-toggle">
-                      <span class="subsection-toggle-title">
-                        <span class="dot"></span>
-                        Классификация (тип) рабочих зон
-                      </span>
+                      <span class="subsection-toggle-title"><span class="dot"></span>Классификация (тип) рабочих зон</span>
                       <span class="subsection-chevron">▼</span>
                     </div>
                     <div class="subsection-body">
                       <div class="zone-table-wrap">
-                    <table class="zone-table">
-                      <thead>
-                        <tr>
-                          <th>Тип зоны</th>
-                          <th>Наименование зоны</th>
-                          <th>Ограничения по мощности</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><span class="zone-num z1">1</span></td>
-                          <td>Зоны проведения работ</td>
-                          <td>не более 65м<br><span class="zone-meta">BT1: мощн. 9 (4 дБ, ~40м) · BT2/BT3: мощн. 3 (-20 дБ)</span></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z2">2</span></td>
-                          <td>Столовые</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z3">3</span></td>
-                          <td>Опасные зоны</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z4">4</span></td>
-                          <td>Курилки</td>
-                          <td>не более 8 м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 1 (-40 дБ, ~5м)</span></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z5">5</span></td>
-                          <td>Зоны отдыха внутри</td>
-                          <td>не более 15м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 2 (-30 дБ)</span></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z6">6</span></td>
-                          <td>ВЖГ</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z7">7</span></td>
-                          <td>Туалеты</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z8">8</span></td>
-                          <td>Остановки автобусов</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z9">9</span></td>
-                          <td>Административные помещения</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z10">10</span></td>
-                          <td>Зона выдачи СИЗ (WW)</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z11">11</span></td>
-                          <td>Склад</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z12">12</span></td>
-                          <td>Мастерские</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td><span class="zone-num z13">13</span></td>
-                          <td>Выходы с объекта (КПП)</td>
-                          <td></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                        <table class="zone-table">
+                          <thead>
+                            <tr><th>Тип зоны</th><th>Наименование зоны</th><th>Ограничения по мощности</th></tr>
+                          </thead>
+                          <tbody>
+                            <tr><td><span class="zone-num z1">1</span></td><td>Зоны проведения работ</td><td>не более 65м<br><span class="zone-meta">BT1: мощн. 9 (4 дБ, ~40м) · BT2/BT3: мощн. 3 (-20 дБ)</span></td></tr>
+                            <tr><td><span class="zone-num z2">2</span></td><td>Столовые</td><td></td></tr>
+                            <tr><td><span class="zone-num z3">3</span></td><td>Опасные зоны</td><td></td></tr>
+                            <tr><td><span class="zone-num z4">4</span></td><td>Курилки</td><td>не более 8 м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 1 (-40 дБ, ~5м)</span></td></tr>
+                            <tr><td><span class="zone-num z5">5</span></td><td>Зоны отдыха внутри</td><td>не более 15м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 2 (-30 дБ)</span></td></tr>
+                            <tr><td><span class="zone-num z6">6</span></td><td>ВЖГ</td><td></td></tr>
+                            <tr><td><span class="zone-num z7">7</span></td><td>Туалеты</td><td></td></tr>
+                            <tr><td><span class="zone-num z8">8</span></td><td>Остановки автобусов</td><td></td></tr>
+                            <tr><td><span class="zone-num z9">9</span></td><td>Административные помещения</td><td></td></tr>
+                            <tr><td><span class="zone-num z10">10</span></td><td>Зона выдачи СИЗ (WW)</td><td></td></tr>
+                            <tr><td><span class="zone-num z11">11</span></td><td>Склад</td><td></td></tr>
+                            <tr><td><span class="zone-num z12">12</span></td><td>Мастерские</td><td></td></tr>
+                            <tr><td><span class="zone-num z13">13</span></td><td>Выходы с объекта (КПП)</td><td></td></tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
               <div class="step">
                 <div class="step-num">4</div>
-                <div class="step-content">
-                  <div class="step-text">
-                    При установке метки заполнить в приложении <strong>подробное описание местоположения</strong> и <strong>загрузить фотографии</strong>.
-                    <button class="screenshot-btn" onclick="openModal(5)">📱 Скрин</button>
-                  </div>
-                </div>
+                <div class="step-content"><div class="step-text">При установке метки заполнить в приложении <strong>подробное описание местоположения</strong> и <strong>загрузить фотографии</strong>.<button class="screenshot-btn" onclick="openModal(5)">📱 Скрин</button></div></div>
               </div>
-
               <div class="step">
                 <div class="step-num">5</div>
-                <div class="step-content">
-                  <div class="step-text">
-                    Разместить фото/видео и описание расположения метки в <strong>рабочий чат</strong>.
-                  </div>
-                </div>
+                <div class="step-content"><div class="step-text">Разместить фото/видео и описание расположения метки в <strong>рабочий чат</strong>.</div></div>
               </div>
-
               <div class="step">
                 <div class="step-num">6</div>
-                <div class="step-content">
-                  <div class="step-text">
-                    По возвращении в офис — разместить установленную метку на <strong>web-карте</strong>.
-                  </div>
-                </div>
+                <div class="step-content"><div class="step-text">По возвращении в офис — разместить установленную метку на <strong>web-карте</strong>.</div></div>
               </div>
-
               <div class="step">
                 <div class="step-num">7</div>
-                <div class="step-content">
-                  <div class="step-text">
-                    В BackEnd выставить <strong>маршрут метки</strong>.
-                    <button class="screenshot-btn" onclick="openModal(6)">🖥 Скрин</button>
-                  </div>
-                </div>
+                <div class="step-content"><div class="step-text">В BackEnd выставить <strong>маршрут метки</strong>.<button class="screenshot-btn" onclick="openModal(6)">🖥 Скрин</button></div></div>
               </div>
-
-              <div class="note note-success">
-                <span class="note-icon">✅</span>
-                <span>Только после выставления маршрута в BackEnd установка метки считается полностью завершённой.</span>
-              </div>
-
+              <div class="note note-success"><span class="note-icon">✅</span><span>Только после выставления маршрута в BackEnd установка метки считается полностью завершённой.</span></div>
             </div>
           </div>
-          <!-- /Установка метки -->
 
         </div>
       </div>
@@ -582,14 +358,10 @@
       </div>
       <div class="guide-body">
         <div class="guide-inner">
-          <div class="note note-info">
-            <span class="note-icon">ℹ️</span>
-            <span>Раздел в разработке — содержание будет добавлено позже.</span>
-          </div>
+          <div class="note note-info"><span class="note-icon">ℹ️</span><span>Раздел в разработке — содержание будет добавлено позже.</span></div>
         </div>
       </div>
     </div>
-    <!-- /Регистрация новых пользователей -->
 
     <!-- ОФОРМЛЕНИЕ ЗАЯВКИ OZON/CDEK -->
     <div class="guide-group" data-group="ozon-cdek">
@@ -609,14 +381,10 @@
       </div>
       <div class="guide-body">
         <div class="guide-inner">
-          <div class="note note-info">
-            <span class="note-icon">ℹ️</span>
-            <span>Раздел в разработке — содержание будет добавлено позже.</span>
-          </div>
+          <div class="note note-info"><span class="note-icon">ℹ️</span><span>Раздел в разработке — содержание будет добавлено позже.</span></div>
         </div>
       </div>
     </div>
-    <!-- /Оформление заявки OZON/CDEK -->
 
     <!-- ЗАЯВЛЕНИЯ НА ОТПУСК / ЗАКАЗ БИЛЕТОВ -->
     <div class="guide-group" data-group="vacation">
@@ -636,18 +404,14 @@
       </div>
       <div class="guide-body">
         <div class="guide-inner">
-          <div class="note note-info">
-            <span class="note-icon">ℹ️</span>
-            <span>Раздел в разработке — содержание будет добавлено позже.</span>
-          </div>
+          <div class="note note-info"><span class="note-icon">ℹ️</span><span>Раздел в разработке — содержание будет добавлено позже.</span></div>
         </div>
       </div>
     </div>
-    <!-- /Заявления на отпуск / заказ билетов -->
 
   </div>
 
-  <!-- ===== IMAGE MODAL ===== -->
+  <!-- IMAGE MODAL -->
   <div id="imgModal" onclick="handleModalClick(event)">
     <div class="img-modal-inner">
       <button class="img-modal-close" onclick="closeModal()">✕</button>
@@ -659,7 +423,6 @@
   </div>
 
   <script>
-    // ===== AUTH =====
     const AUTH_SESSION_KEY = 'spravka_auth';
     const AUTH_PASSWORDS = ['VELES_2024', 'impl_dept'];
 
@@ -687,7 +450,6 @@
       }
     })();
 
-    // ===== IMAGE MODAL =====
     const SCREENSHOTS = [
       ['./images/ble-screen-1.jpg', 'Скрин 1 — Отправка данных на сервер'],
       ['./images/ble-screen-2.jpg', 'Скрин 2 — Настройки метки (тип, зона, период)'],
@@ -736,7 +498,6 @@
       if (e.key === 'ArrowRight') navModal(1);
     });
 
-    // ===== GROUPS =====
     const STORAGE_KEY = 'itssupport_spravka_v1';
 
     function toggleGroup(header) {
