@@ -206,6 +206,17 @@
       font-size: 14px; font-family: 'Source Sans 3', sans-serif;
       display: none;
     }
+
+    /* GLOSSARY TERMS */
+    .glossary-list { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+    .glossary-item { border-radius: 9px; overflow: hidden; border: 1px solid var(--border); transition: border-color 0.2s, box-shadow 0.2s; }
+    .glossary-item:hover { border-color: rgba(33,150,243,0.3); box-shadow: 0 2px 8px rgba(21,101,192,0.07); }
+    .glossary-row { display: flex; gap: 0; }
+    .glossary-term { min-width: 200px; max-width: 200px; padding: 10px 13px; background: #EEF6FF; font-family: 'Oswald', sans-serif; font-size: 0.82em; font-weight: 600; letter-spacing: 0.04em; color: var(--primary); display: flex; align-items: center; border-right: 2px solid rgba(33,150,243,0.2); flex-shrink: 0; }
+    .glossary-def { padding: 10px 13px; font-size: 13.5px; color: #37474F; line-height: 1.5; flex: 1; background: #fff; }
+    .glossary-example { background: #F9FAFB; border-top: 1px solid var(--border); padding: 8px 13px 9px; font-size: 12.5px; color: #5D7A8A; line-height: 1.45; }
+    .glossary-example em { font-style: normal; color: #37474F; font-weight: 600; }
+    @media (max-width: 560px) { .glossary-term { min-width: 120px; max-width: 120px; font-size: 0.74em; } }
   </style>
 </head>
 <body>
@@ -453,6 +464,279 @@
         </div>
       </div>
     </div>
+
+    <!-- ГЛОССАРИЙ И ПРАВИЛА -->
+    <div class="guide-group" data-group="glossary">
+      <div class="group-header" onclick="toggleGroup(this)">
+        <h2>
+          <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-top:-2px">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+          </span>
+          Глоссарий и правила
+        </h2>
+        <span class="group-chevron">▼</span>
+      </div>
+      <div class="guide-body">
+        <div class="guide-inner">
+
+          <!-- Базовые показатели -->
+          <div class="guide-section">
+            <div class="subsection-wrap" onclick="this.classList.toggle('open')">
+              <div class="subsection-toggle">
+                <span class="subsection-toggle-title"><span class="dot"></span>Базовые показатели (норма, план, факт)</span>
+                <span class="subsection-chevron">▼</span>
+              </div>
+              <div class="subsection-body">
+                <div style="padding-top: 10px;">
+                  <div class="note note-info" style="margin-bottom: 10px;"><span class="note-icon">ℹ️</span><span>Вся активность сотрудников учитывается <strong>только в рамках заданного плана</strong>. Всё, что за рамками плана — выбрасывается из основного анализа. Показатель задаётся на уровне компании, объекта и может быть изменён только высшим руководством.</span></div>
+                  <div class="glossary-list">
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">[норма]</div>
+                        <div class="glossary-def">Основной показатель. Нулевая базовая точка (точка координат), относительно которой происходит измерение других показателей: <strong>[план]</strong> и <strong>[факт]</strong>. Показывает, насколько хорошо или плохо работает сотрудник.</div>
+                      </div>
+                    </div>
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">[план]</div>
+                        <div class="glossary-def">Как правило, этот показатель по умолчанию равен показателю <strong>[норма]</strong>, но при необходимости может быть задан индивидуально на каждую смену сотрудника.</div>
+                      </div>
+                    </div>
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">[факт]</div>
+                        <div class="glossary-def">Фактические показатели в часах, которые берутся (анализируются) только в рамках <strong>[плана]</strong>. Если показатели <strong>[факта]</strong> выполнены относительно <strong>[нормы]</strong> — это хорошо. Если выполнены относительно <strong>[плана]</strong> — это тоже вопрос.</div>
+                      </div>
+                      <div class="glossary-example">
+                        <em>Пример:</em> Норма смены = 10 ч, план = 12 ч. Человек отработал 11 ч. По факту он выполнил 11 из 12 по <strong>[плану]</strong>, но выполнил 11 из 10 по <strong>[норме]</strong>.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="note note-warn" style="margin-top: 10px;"><span class="note-icon">⚠️</span><span>Если <strong>[план]</strong> не изменён — система считает факт относительно нормы. Активность фиксируется только в рамках планового времени смены.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Статусы дней -->
+          <div class="guide-section">
+            <div class="subsection-wrap" onclick="this.classList.toggle('open')">
+              <div class="subsection-toggle">
+                <span class="subsection-toggle-title"><span class="dot"></span>Статусы дней и смен</span>
+                <span class="subsection-chevron">▼</span>
+              </div>
+              <div class="subsection-body">
+                <div style="padding-top: 10px;">
+                  <div class="glossary-list">
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">День на объекте</div>
+                        <div class="glossary-def">Статус человека, который <strong>предполагает</strong>, что он находится на объекте: выход на смену, выходной, получение пропуска, больничный и другие.</div>
+                      </div>
+                    </div>
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">Активный день</div>
+                        <div class="glossary-def">Статус человека, который <strong>предполагает</strong>, что он вышел на смену или может выйти на смену (и вышел / не вышел). Например: Выходной, Отпуск.</div>
+                      </div>
+                      <div class="glossary-example">
+                        <em>Пример:</em> Статус «Больничный» — не подходит, т.к. в этот день человек не может выйти на смену по объективным причинам.
+                      </div>
+                    </div>
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">Пассивный день (на объекте)</div>
+                        <div class="glossary-def">Статус, при котором человек находится на объекте, но объективно не может выйти на смену. Например: Б, ОТ, ПП, МО и прочие.</div>
+                      </div>
+                    </div>
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">Пассивный день (вне объекта)</div>
+                        <div class="glossary-def">Статус, при котором человека нет на объекте. Например: Отпуск, В пути и т.д.</div>
+                      </div>
+                    </div>
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">Смена</div>
+                        <div class="glossary-def">Рабочая смена, т.е. день, когда человек вышел на работу: на свою смену.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Рабочие часы и активность -->
+          <div class="guide-section" style="margin-bottom: 0;">
+            <div class="subsection-wrap" onclick="this.classList.toggle('open')">
+              <div class="subsection-toggle">
+                <span class="subsection-toggle-title"><span class="dot"></span>Рабочие часы и активность (РЧ, АРЧ, ПРЧ)</span>
+                <span class="subsection-chevron">▼</span>
+              </div>
+              <div class="subsection-body">
+                <div style="padding-top: 10px;">
+                  <div class="note note-info" style="margin-bottom: 10px;"><span class="note-icon">ℹ️</span><span>Смена — отношение кол-ва Смен к Активным дням. Например: «У этого работника 5/7=85.7%. Мы трактуем это следующим образом: на каждые 100 Активных дней должно приходиться 85.7 Смен, и 100−85.7=14.3 выходных дня».</span></div>
+                  <div class="glossary-list">
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">Рабочие Часы (РЧ)</div>
+                        <div class="glossary-def">Время в смене, которое отведено для работы. То есть: Время Смены − Время Перерывов = Рабочие Часы.</div>
+                      </div>
+                    </div>
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">Активные Рабочие Часы (АРЧ)</div>
+                        <div class="glossary-def">Время в течение РЧ, которое было распознано устройствами WorkWatch как <strong>«Активность»</strong> (Ходьба + Работа).</div>
+                      </div>
+                    </div>
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">Пассивные РЧ (ПРЧ)</div>
+                        <div class="glossary-def">Время в течение РЧ, которое было распознано устройствами WorkWatch как <strong>«Простой»</strong> (слабая активность).</div>
+                      </div>
+                    </div>
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">Ходьба в РЧ (ХРЧ)</div>
+                        <div class="glossary-def">Время в течение РЧ, которое было распознано устройствами WorkWatch как <strong>«Ходьба»</strong>.</div>
+                      </div>
+                    </div>
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">Работа РЧ (РРЧ)</div>
+                        <div class="glossary-def">Время в течение РЧ, которое было распознано устройствами WorkWatch как <strong>«Работа»</strong>.</div>
+                      </div>
+                    </div>
+                    <div class="glossary-item">
+                      <div class="glossary-row">
+                        <div class="glossary-term">Перерыв</div>
+                        <div class="glossary-def">Перерывы в течение смены: обед, перекуры (если такие предусмотрены).</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /ГЛОССАРИЙ И ПРАВИЛА -->
+
+    <!-- ЧАСЫ WORKWATCH -->
+    <div class="guide-group" data-group="workwatch">
+      <div class="group-header" onclick="toggleGroup(this)">
+        <h2>
+          <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-top:-2px">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </span>
+          Часы WorkWatch
+        </h2>
+        <span class="group-chevron">▼</span>
+      </div>
+      <div class="guide-body">
+        <div class="guide-inner">
+
+          <!-- Описание устройства -->
+          <div class="guide-section">
+            <div class="subsection-wrap" onclick="this.classList.toggle('open')">
+              <div class="subsection-toggle">
+                <span class="subsection-toggle-title"><span class="dot"></span>Описание устройства</span>
+                <span class="subsection-chevron">▼</span>
+              </div>
+              <div class="subsection-body">
+                <div style="padding-top: 10px;">
+                  <div class="note note-info" style="margin-bottom: 10px;"><span class="note-icon">ℹ️</span><span>Основное устройство, вокруг которого строится наша работа — умные часы <strong>WorkWatch</strong>.</span></div>
+                  <div class="steps">
+                    <div class="step">
+                      <div class="step-num">1</div>
+                      <div class="step-content"><div class="step-text">Когда часы установлены на <strong>зарядную панель</strong>, на экране отображается:<br>
+                        <strong>1</strong> — Версия ПО на данных часах<br>
+                        <strong>2</strong> — Процент заряда<br>
+                        <strong>3</strong> — Первые 4 знака uuid часов
+                      </div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">2</div>
+                      <div class="step-content"><div class="step-text">Если снять часы с зарядной станции — они подключатся к <strong>wi-fi</strong>. Если wi-fi нет или часы к нему не привязаны — выдадут ошибку подключения.</div></div>
+                    </div>
+                  </div>
+                  <div class="note note-warn" style="margin-top: 8px;"><span class="note-icon">⚠️</span><span>При снятии с зарядки часы автоматически пытаются подключиться к сети. Ошибка подключения WiFi означает, что часы не привязаны к сети или сеть недоступна.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Вход в меню -->
+          <div class="guide-section">
+            <div class="subsection-wrap" onclick="this.classList.toggle('open')">
+              <div class="subsection-toggle">
+                <span class="subsection-toggle-title"><span class="dot"></span>Вход в меню часов</span>
+                <span class="subsection-chevron">▼</span>
+              </div>
+              <div class="subsection-body">
+                <div style="padding-top: 10px;">
+                  <div class="steps">
+                    <div class="step">
+                      <div class="step-num">1</div>
+                      <div class="step-content"><div class="step-text">Чтобы зайти в меню — необходимо <strong>отключить часы от wi-fi</strong>: зажать среднюю кнопку на <strong>2–3 секунды</strong>. После этого появится экран часов.</div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">2</div>
+                      <div class="step-content"><div class="step-text">Для входа в меню — <strong>быстро 2 раза нажать</strong> на среднюю кнопку.</div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">3</div>
+                      <div class="step-content"><div class="step-text">В пункте меню <strong>«Связь»</strong> — отображается wi-fi сеть (SSID) и сетевой домен, к которым подключены часы.</div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">4</div>
+                      <div class="step-content"><div class="step-text">В пункте меню <strong>«Информация»</strong> — отображается полный uuid часов и версия прошивки.</div></div>
+                    </div>
+                  </div>
+                  <div class="note note-info" style="margin-top: 8px;"><span class="note-icon">ℹ️</span><span>UUID часов и версия ПО — основные данные для идентификации устройства при работе с BackEnd и при обращении в Embed команду.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Перезагрузка и обновление -->
+          <div class="guide-section" style="margin-bottom: 0;">
+            <div class="subsection-wrap" onclick="this.classList.toggle('open')">
+              <div class="subsection-toggle">
+                <span class="subsection-toggle-title"><span class="dot"></span>Перезагрузка и обновление ПО</span>
+                <span class="subsection-chevron">▼</span>
+              </div>
+              <div class="subsection-body">
+                <div style="padding-top: 10px;">
+                  <div class="steps">
+                    <div class="step">
+                      <div class="step-num">1</div>
+                      <div class="step-content"><div class="step-text">Для <strong>перезагрузки</strong> или <strong>выключения</strong> часов — зайти в меню часов → пункт <kbd>Питание</kbd>. Там доступны: <strong>Выключение</strong>, <strong>Перезапуск</strong>, <strong>Сон</strong>.</div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">2</div>
+                      <div class="step-content"><div class="step-text">Для <strong>обновления ПО</strong> — зайти в меню → пункт <kbd>Обновление</kbd>. Выбрать <strong>ветку обновления</strong> (уточнить актуальную у Embed команды или старшего инженера по внедрению).</div></div>
+                    </div>
+                  </div>
+                  <div class="note note-danger" style="margin-top: 8px;"><span class="note-icon">⛔</span><span>Не выбирать ветку обновления самостоятельно без согласования — актуальную ветку всегда уточнять у <strong>Embed команды</strong> или <strong>старшего инженера</strong>.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /ЧАСЫ WORKWATCH -->
 
     <!-- ЗАЯВЛЕНИЯ НА ОТПУСК / ЗАКАЗ БИЛЕТОВ -->
     <div class="guide-group" data-group="vacation">
