@@ -257,129 +257,149 @@
       <div class="guide-body">
         <div class="guide-inner">
 
-          <!-- Регистрация новой метки -->
+          <!-- 1. Регистрация новой метки -->
           <div class="guide-section">
-            <div class="section-title"><span class="dot"></span>Регистрация новой метки (никогда не использовалась ранее)</div>
-            <div class="steps">
-              <div class="step">
-                <div class="step-num">1</div>
-                <div class="step-content"><div class="step-text">Включить метку. В мобильном приложении она будет отображаться как <kbd>ITS BLE Tag</kbd>.</div></div>
+            <div class="subsection-wrap" onclick="this.classList.toggle('open')">
+              <div class="subsection-toggle">
+                <span class="subsection-toggle-title"><span class="dot"></span>Регистрация новой метки (никогда не использовалась ранее)</span>
+                <span class="subsection-chevron">▼</span>
               </div>
-              <div class="step">
-                <div class="step-num">2</div>
-                <div class="step-content"><div class="step-text">Выставить в настройках метки: <strong>тип метки</strong> (bt1, bt2, bt3), <strong>тип зоны</strong>, <strong>период сканирования</strong>.<br>Важно: первым параметром выставить <strong>тип метки</strong>.<button class="screenshot-btn" onclick="openModal(1)">пример</button></div></div>
+              <div class="subsection-body">
+                <div style="padding-top: 10px;">
+                  <div class="steps">
+                    <div class="step">
+                      <div class="step-num">1</div>
+                      <div class="step-content"><div class="step-text">Включить метку. В мобильном приложении она будет отображаться как <kbd>ITS BLE Tag</kbd>.</div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">2</div>
+                      <div class="step-content"><div class="step-text">Выставить в настройках метки: <strong>тип метки</strong> (bt1, bt2, bt3), <strong>тип зоны</strong>, <strong>период сканирования</strong>.<br>Важно: первым параметром выставить <strong>тип метки</strong>.<button class="screenshot-btn" onclick="event.stopPropagation(); openModal(1)">пример</button></div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">3</div>
+                      <div class="step-content"><div class="step-text">При настройке метки задать <strong>ID зоны</strong> (номер метки) — только свободным номером.<br>Сводная таблица свободных номеров находится в <a class="guide-link" href="https://docs.google.com/spreadsheets/d/1CU56AZdWC9dCvkf_z6CWMtrgfuWRCG3HYx7hp79vI_c/edit?gid=1105933443#gid=1105933443" target="_blank" rel="noopener" onclick="event.stopPropagation()">журнале BLE</a>.</div></div>
+                    </div>
+                    <div class="note note-danger"><span class="note-icon">⛔</span><span>Не допускать повторения номеров меток — это приведёт к нарушению аналитики и логики установки.</span></div>
+                    <div class="step">
+                      <div class="step-num">4</div>
+                      <div class="step-content"><div class="step-text">После настройки метки в мобильном приложении нажать <strong>«Отправить данные на сервер»</strong>.<button class="screenshot-btn" onclick="event.stopPropagation(); openModal(0)">пример</button></div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">5</div>
+                      <div class="step-content"><div class="step-text">Проверить, что метка появилась в BackEnd:<br><a class="guide-link" href="https://backend.vsm.workwatch.pro/admin/organization/ble/" target="_blank" rel="noopener" onclick="event.stopPropagation()">backend.vsm.workwatch.pro/admin/organization/ble/</a><button class="screenshot-btn" onclick="event.stopPropagation(); openModal(2)">пример</button><button class="screenshot-btn" onclick="event.stopPropagation(); openModal(3)">пример</button></div></div>
+                    </div>
+                    <div class="note note-info"><span class="note-icon">ℹ️</span><span>Первый пример — метка со статусом «поставлена на учёт» (новая). Второй пример — метка со статусом «установлена, работает» с GPS-координатами.</span></div>
+                  </div>
+                </div>
               </div>
-              <div class="step">
-                <div class="step-num">3</div>
-                <div class="step-content"><div class="step-text">При настройке метки задать <strong>ID зоны</strong> (номер метки) — только свободным номером.<br>Сводная таблица свободных номеров находится в <a class="guide-link" href="https://docs.google.com/spreadsheets/d/1CU56AZdWC9dCvkf_z6CWMtrgfuWRCG3HYx7hp79vI_c/edit?gid=1105933443#gid=1105933443" target="_blank" rel="noopener">журнале BLE</a>.</div></div>
-              </div>
-              <div class="note note-danger"><span class="note-icon">⛔</span><span>Не допускать повторения номеров меток — это приведёт к нарушению аналитики и логики установки.</span></div>
-              <div class="step">
-                <div class="step-num">4</div>
-                <div class="step-content"><div class="step-text">После настройки метки в мобильном приложении нажать <strong>«Отправить данные на сервер»</strong>.<button class="screenshot-btn" onclick="openModal(0)">пример</button></div></div>
-              </div>
-              <div class="step">
-                <div class="step-num">5</div>
-                <div class="step-content"><div class="step-text">Проверить, что метка появилась в BackEnd:<br><a class="guide-link" href="https://backend.vsm.workwatch.pro/admin/organization/ble/" target="_blank" rel="noopener">backend.vsm.workwatch.pro/admin/organization/ble/</a><button class="screenshot-btn" onclick="openModal(2)">пример</button><button class="screenshot-btn" onclick="openModal(3)">пример</button></div></div>
-              </div>
-              <div class="note note-info"><span class="note-icon">ℹ️</span><span>Первый пример — метка со статусом «поставлена на учёт» (новая). Второй пример — метка со статусом «установлена, работает» с GPS-координатами.</span></div>
             </div>
           </div>
 
-          <!-- Замена действующей метки -->
+          <!-- 2. Установка метки -->
           <div class="guide-section">
+            <div class="subsection-wrap" onclick="this.classList.toggle('open')">
+              <div class="subsection-toggle">
+                <span class="subsection-toggle-title"><span class="dot"></span>Установка метки</span>
+                <span class="subsection-chevron">▼</span>
+              </div>
+              <div class="subsection-body">
+                <div style="padding-top: 10px;">
+                  <div class="steps">
+                    <div class="step">
+                      <div class="step-num">1</div>
+                      <div class="step-content"><div class="step-text">Перед выходом взять <strong>рюкзак со всем необходимым инструментом</strong> и <strong>специальные часы с режимом отладки</strong>.</div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">2</div>
+                      <div class="step-content"><div class="step-text">Убедиться, что в зоне устанавливаемой метки часы с режимом отладки <strong>не ловят стабильный сигнал</strong> от других меток.<button class="screenshot-btn" onclick="event.stopPropagation(); openModal(4)">пример</button></div></div>
+                    </div>
+                    <div class="note note-warn"><span class="note-icon">⚠️</span><span>Если часы стабильно ловят другую метку — место для установки выбрано неверно. Нужно сменить позицию.</span></div>
+                    <div class="step">
+                      <div class="step-num">3</div>
+                      <div class="step-content">
+                        <div class="step-text">Включить заранее подготовленную метку и выставить параметры исходя из типа зоны на площадке:</div>
+                        <div class="subsection-wrap" onclick="event.stopPropagation(); this.classList.toggle('open')" style="margin-top: 8px;">
+                          <div class="subsection-toggle">
+                            <span class="subsection-toggle-title"><span class="dot"></span>Классификация (тип) рабочих зон</span>
+                            <span class="subsection-chevron">▼</span>
+                          </div>
+                          <div class="subsection-body">
+                            <div class="zone-table-wrap">
+                              <table class="zone-table">
+                                <thead>
+                                  <tr><th>Тип зоны</th><th>Наименование зоны</th><th>Ограничения по мощности</th></tr>
+                                </thead>
+                                <tbody>
+                                  <tr><td><strong>1</strong></td><td>Зоны проведения работ</td><td>не более 65м<br><span class="zone-meta">BT1: мощн. 9 (4 дБ, ~40м) · BT2/BT3: мощн. 3 (-20 дБ)</span></td></tr>
+                                  <tr><td><strong>2</strong></td><td>Столовые</td><td></td></tr>
+                                  <tr><td><strong>3</strong></td><td>Опасные зоны</td><td></td></tr>
+                                  <tr><td><strong>4</strong></td><td>Курилки</td><td>не более 8 м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 1 (-40 дБ, ~5м)</span></td></tr>
+                                  <tr><td><strong>5</strong></td><td>Зоны отдыха внутри</td><td>не более 15м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 2 (-30 дБ)</span></td></tr>
+                                  <tr><td><strong>6</strong></td><td>ВЖГ</td><td></td></tr>
+                                  <tr><td><strong>7</strong></td><td>Туалеты</td><td></td></tr>
+                                  <tr><td><strong>8</strong></td><td>Остановки автобусов</td><td></td></tr>
+                                  <tr><td><strong>9</strong></td><td>Административные помещения</td><td></td></tr>
+                                  <tr><td><strong>10</strong></td><td>Зона выдачи СИЗ (WW)</td><td></td></tr>
+                                  <tr><td><strong>11</strong></td><td>Склад</td><td></td></tr>
+                                  <tr><td><strong>12</strong></td><td>Мастерские</td><td></td></tr>
+                                  <tr><td><strong>13</strong></td><td>Выходы с объекта (КПП)</td><td></td></tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">4</div>
+                      <div class="step-content"><div class="step-text">При установке метки заполнить в приложении <strong>подробное описание местоположения</strong> и <strong>загрузить фотографии</strong>.<button class="screenshot-btn" onclick="event.stopPropagation(); openModal(5)">пример</button></div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">5</div>
+                      <div class="step-content"><div class="step-text">Разместить фото/видео и описание расположения метки в <strong>рабочий чат</strong>.</div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">6</div>
+                      <div class="step-content"><div class="step-text">По возвращении в офис — разместить установленную метку на <strong>web-карте</strong>.</div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">7</div>
+                      <div class="step-content"><div class="step-text">В BackEnd выставить <strong>маршрут метки</strong>.<button class="screenshot-btn" onclick="event.stopPropagation(); openModal(6)">пример</button></div></div>
+                    </div>
+                    <div class="note note-success"><span class="note-icon">✅</span><span>Только после выставления маршрута в BackEnd установка метки считается полностью завершённой.</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Замена действующей метки -->
+          <div class="guide-section" style="margin-bottom: 0;">
             <div class="subsection-wrap" onclick="this.classList.toggle('open')">
               <div class="subsection-toggle">
                 <span class="subsection-toggle-title"><span class="dot"></span>Замена действующей метки</span>
                 <span class="subsection-chevron">▼</span>
               </div>
               <div class="subsection-body">
-                <div class="note note-info" style="margin: 10px 0 8px 0;"><span class="note-icon">ℹ️</span><span>Если необходимо заменить действующую метку на новую — следуем инструкции:</span></div>
-                <div class="steps">
-                  <div class="step">
-                    <div class="step-num">1</div>
-                    <div class="step-content"><div class="step-text">Подключиться к <strong>действующей метке</strong> в мобильном приложении и к существующему <strong>ID зоны</strong> добавить в начале <kbd>33</kbd>.<br>Пример: была <kbd>947</kbd> → стала <kbd>33947</kbd>.</div></div>
-                  </div>
-                  <div class="step">
-                    <div class="step-num">2</div>
-                    <div class="step-content"><div class="step-text">Отправить обход с этой меткой на сервер.</div></div>
-                  </div>
-                  <div class="step">
-                    <div class="step-num">3</div>
-                    <div class="step-content"><div class="step-text">Подключиться к <strong>новой метке</strong> и задать ей <strong>изначальный номер</strong> старой метки (например <kbd>947</kbd>), затем отправить обход на сервер.</div></div>
-                  </div>
-                </div>
-                <div class="note note-warn" style="margin-top: 8px;"><span class="note-icon">⚠️</span><span>Если метка <strong>утеряна</strong> — устанавливаем новую со свободным номером из журнала BLE.</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Установка метки -->
-          <div class="guide-section">
-            <div class="section-title"><span class="dot"></span>Установка метки</div>
-            <div class="steps">
-              <div class="step">
-                <div class="step-num">1</div>
-                <div class="step-content"><div class="step-text">Перед выходом взять <strong>рюкзак со всем необходимым инструментом</strong> и <strong>специальные часы с режимом отладки</strong>.</div></div>
-              </div>
-              <div class="step">
-                <div class="step-num">2</div>
-                <div class="step-content"><div class="step-text">Убедиться, что в зоне устанавливаемой метки часы с режимом отладки <strong>не ловят стабильный сигнал</strong> от других меток.<button class="screenshot-btn" onclick="openModal(4)">пример</button></div></div>
-              </div>
-              <div class="note note-warn"><span class="note-icon">⚠️</span><span>Если часы стабильно ловят другую метку — место для установки выбрано неверно. Нужно сменить позицию.</span></div>
-              <div class="step">
-                <div class="step-num">3</div>
-                <div class="step-content">
-                  <div class="step-text">Включить заранее подготовленную метку и выставить параметры исходя из типа зоны на площадке:</div>
-                  <div class="subsection-wrap" onclick="event.stopPropagation(); this.classList.toggle('open')" style="margin-top: 8px;">
-                    <div class="subsection-toggle">
-                      <span class="subsection-toggle-title"><span class="dot"></span>Классификация (тип) рабочих зон</span>
-                      <span class="subsection-chevron">▼</span>
+                <div style="padding-top: 10px;">
+                  <div class="note note-info" style="margin-bottom: 8px;"><span class="note-icon">ℹ️</span><span>Если необходимо заменить действующую метку на новую — следуем инструкции:</span></div>
+                  <div class="steps">
+                    <div class="step">
+                      <div class="step-num">1</div>
+                      <div class="step-content"><div class="step-text">Подключиться к <strong>действующей метке</strong> в мобильном приложении и к существующему <strong>ID зоны</strong> добавить в начале <kbd>33</kbd>.<br>Пример: была <kbd>947</kbd> → стала <kbd>33947</kbd>.</div></div>
                     </div>
-                    <div class="subsection-body">
-                      <div class="zone-table-wrap">
-                        <table class="zone-table">
-                          <thead>
-                            <tr><th>Тип зоны</th><th>Наименование зоны</th><th>Ограничения по мощности</th></tr>
-                          </thead>
-                          <tbody>
-                            <tr><td><strong>1</strong></td><td>Зоны проведения работ</td><td>не более 65м<br><span class="zone-meta">BT1: мощн. 9 (4 дБ, ~40м) · BT2/BT3: мощн. 3 (-20 дБ)</span></td></tr>
-                            <tr><td><strong>2</strong></td><td>Столовые</td><td></td></tr>
-                            <tr><td><strong>3</strong></td><td>Опасные зоны</td><td></td></tr>
-                            <tr><td><strong>4</strong></td><td>Курилки</td><td>не более 8 м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 1 (-40 дБ, ~5м)</span></td></tr>
-                            <tr><td><strong>5</strong></td><td>Зоны отдыха внутри</td><td>не более 15м<br><span class="zone-meta">BT1: мощн. 5 (-12 дБ, ~8м) · BT2/BT3: мощн. 2 (-30 дБ)</span></td></tr>
-                            <tr><td><strong>6</strong></td><td>ВЖГ</td><td></td></tr>
-                            <tr><td><strong>7</strong></td><td>Туалеты</td><td></td></tr>
-                            <tr><td><strong>8</strong></td><td>Остановки автобусов</td><td></td></tr>
-                            <tr><td><strong>9</strong></td><td>Административные помещения</td><td></td></tr>
-                            <tr><td><strong>10</strong></td><td>Зона выдачи СИЗ (WW)</td><td></td></tr>
-                            <tr><td><strong>11</strong></td><td>Склад</td><td></td></tr>
-                            <tr><td><strong>12</strong></td><td>Мастерские</td><td></td></tr>
-                            <tr><td><strong>13</strong></td><td>Выходы с объекта (КПП)</td><td></td></tr>
-                          </tbody>
-                        </table>
-                      </div>
+                    <div class="step">
+                      <div class="step-num">2</div>
+                      <div class="step-content"><div class="step-text">Отправить обход с этой меткой на сервер.</div></div>
+                    </div>
+                    <div class="step">
+                      <div class="step-num">3</div>
+                      <div class="step-content"><div class="step-text">Подключиться к <strong>новой метке</strong> и задать ей <strong>изначальный номер</strong> старой метки (например <kbd>947</kbd>), затем отправить обход на сервер.</div></div>
                     </div>
                   </div>
+                  <div class="note note-warn" style="margin-top: 8px;"><span class="note-icon">⚠️</span><span>Если метка <strong>утеряна</strong> — устанавливаем новую со свободным номером из журнала BLE.</span></div>
                 </div>
               </div>
-              <div class="step">
-                <div class="step-num">4</div>
-                <div class="step-content"><div class="step-text">При установке метки заполнить в приложении <strong>подробное описание местоположения</strong> и <strong>загрузить фотографии</strong>.<button class="screenshot-btn" onclick="openModal(5)">пример</button></div></div>
-              </div>
-              <div class="step">
-                <div class="step-num">5</div>
-                <div class="step-content"><div class="step-text">Разместить фото/видео и описание расположения метки в <strong>рабочий чат</strong>.</div></div>
-              </div>
-              <div class="step">
-                <div class="step-num">6</div>
-                <div class="step-content"><div class="step-text">По возвращении в офис — разместить установленную метку на <strong>web-карте</strong>.</div></div>
-              </div>
-              <div class="step">
-                <div class="step-num">7</div>
-                <div class="step-content"><div class="step-text">В BackEnd выставить <strong>маршрут метки</strong>.<button class="screenshot-btn" onclick="openModal(6)">пример</button></div></div>
-              </div>
-              <div class="note note-success"><span class="note-icon">✅</span><span>Только после выставления маршрута в BackEnd установка метки считается полностью завершённой.</span></div>
             </div>
           </div>
 
@@ -578,7 +598,6 @@
     window.addEventListener('beforeunload', saveState);
 
     // ===== SEARCH =====
-    // Store original HTML of searchable containers to restore after clearing
     let originalHTML = null;
 
     function getSearchableContainers() {
@@ -598,13 +617,11 @@
         return;
       }
 
-      // Save originals once
       if (!originalHTML) {
         originalHTML = getSearchableContainers().map(el => ({
           el, html: el.querySelector('.guide-body')?.innerHTML || ''
         }));
       } else {
-        // Restore before re-highlighting
         originalHTML.forEach(({ el, html }) => {
           const body = el.querySelector('.guide-body');
           if (body) body.innerHTML = html;
@@ -619,18 +636,14 @@
         const body = group.querySelector('.guide-body');
         if (!body) return;
 
-        // Count matches in text
         const text = body.innerText || body.textContent;
         const matches = text.match(regex);
 
         if (matches && matches.length > 0) {
           totalMatches += matches.length;
           groupsWithResults++;
-          // Open group
           group.classList.add('open');
-          // Open all subsections inside
           group.querySelectorAll('.subsection-wrap').forEach(s => s.classList.add('open'));
-          // Highlight in HTML (only text nodes, skip tags)
           highlightInElement(body, regex);
           group.style.display = '';
         } else {
@@ -653,7 +666,6 @@
     function highlightInElement(el, regex) {
       const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
         acceptNode(node) {
-          // Skip inside screenshot-btn and links to avoid breaking JS handlers
           const parent = node.parentElement;
           if (parent.closest('.screenshot-btn')) return NodeFilter.FILTER_REJECT;
           return NodeFilter.FILTER_ACCEPT;
@@ -686,7 +698,6 @@
         originalHTML = null;
       }
 
-      // Restore group open states from saved
       loadState();
     }
 
@@ -694,7 +705,6 @@
       return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    // Keyboard shortcut: Ctrl+F / Cmd+F → focus search
     document.addEventListener('keydown', e => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
         const input = document.getElementById('searchInput');
